@@ -37,8 +37,8 @@ const App = () => (
     customRoutes={customRoutes}
   >
     <Resource name="offers" create={Create} edit={Edit} show={Show} list={List} />
-    <Resource name="requests" create={Create} edit={Edit} show={Show} />
-    <Resource name="OfferAndRequest" />
+    <Resource name="requests" create={Create} edit={Edit} show={Show} list={List} />
+    <Resource name="OfferAndRequest" list={List} />
     <Resource name="Actor" />
     <Resource name="Profile" />
     <Resource name="Location" />
