@@ -1,5 +1,7 @@
 [![SemApps](https://badgen.net/badge/Powered%20by/SemApps/28CDFB)](https://semapps.org)
 
+![](./public/logo192.png)
+
 # Mutual-Aid.app
 
 Mutual-Aid.app is an app for classified ads that are only visible to people who are part of your trusted network. 
