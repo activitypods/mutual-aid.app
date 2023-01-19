@@ -2,7 +2,7 @@
 
 # Mutual-Aid.app
 
-Mutual-Aid.app is a app for classified ads that are only visible to people who are part of your trusted network. 
+Mutual-Aid.app is an app for classified ads that are only visible to people who are part of your trusted network. 
 Contrary to most of sites of this kind which are very "business" oriented, the main intention of this site is to 
 help each other. This does not prevent you from buying or selling, because for the moment we all need money to live.
 
