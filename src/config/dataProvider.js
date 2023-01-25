@@ -7,6 +7,6 @@ export default dataProvider({
   dataServers,
   resources: dataModels,
   ontologies,
-  jsonContext: process.env.REACT_APP_COMMON_DATA_URL + 'context.json',
+  jsonContext: process.env.REACT_APP_JSON_CONTEXT,
   returnFailedResources: true,
 });
