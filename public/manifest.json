@@ -1,6 +1,6 @@
 {
-  "short_name": "L'Entraide",
-  "name": "L'Entraide",
+  "short_name": "Mutual Aid",
+  "name": "Mutual Aid",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "https://lentraide.app",
+  "start_url": "https://mutual-aid.app",
   "display": "standalone",
   "theme_color": "#417EDA",
   "background_color": "#ffffff"
