@@ -11,6 +11,7 @@ const dataServers = {
         'mp:Request': ['/requests'],
         'vcard:Location': ['/locations'],
         'vcard:Individual': ['/profiles'],
+        'vcard:Group': ['/groups'],
       },
     },
     uploadsContainer: '/files',

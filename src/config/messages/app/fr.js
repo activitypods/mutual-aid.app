@@ -10,6 +10,7 @@ module.exports = {
       send: 'Envoyer',
       send_invitation: "Envoyer l'invitation |||| Envoyer %{smart_count} invitations",
       share: 'Partager',
+      search: 'Rechercher'
     },
     page: {
       post: 'Poster une annonce',

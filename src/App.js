@@ -42,6 +42,7 @@ const App = () => (
     <Resource name="Actor" />
     <Resource name="Profile" />
     <Resource name="Location" />
+    <Resource name="Group" />
   </Admin>
 );
 
