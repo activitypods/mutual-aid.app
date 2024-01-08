@@ -10,6 +10,7 @@ module.exports = {
       send: 'Envoyer',
       send_invitation: "Envoyer l'invitation |||| Envoyer %{smart_count} invitations",
       share: 'Partager',
+      search: 'Rechercher'
     },
     page: {
       post: 'Poster une annonce',
@@ -76,7 +77,7 @@ module.exports = {
     },
     helper: {
       message_profile_show_right:
-        'Envoyer un message à %{username} lui donnera le droit de voir votre profil, pour lui permettre de vous répondre.',
+        "Envoyer un message à l'annonceur lui donnera le droit de voir votre profil, pour lui permettre de vous répondre.",
       no_contact: 'Vous devez ajouter des contacts à votre réseau pour pouvoir les inviter',
     },
     message: {

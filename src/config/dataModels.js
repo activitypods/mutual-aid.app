@@ -43,6 +43,14 @@ const dataModels = {
       dereference: ['vcard:hasAddress/vcard:hasGeo'],
     },
   },
+  Group: {
+    types: ["vcard:Group"],
+    list: {
+      servers: "pod",
+      blankNodes: ["vcard:hasMember"],
+      containers: { pod: ["/groups"] },
+    },
+  }
 };
 
 export default dataModels;
