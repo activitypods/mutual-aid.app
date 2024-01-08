@@ -50,7 +50,7 @@ const ContactField = ({ source, context, ...rest }) => {
           {identity?.id !== record['dc:creator'] && contactsLoaded && !contacts.includes(record[source]) && (
             <Box mb={1}>
               <Alert severity="warning">
-                {translate('app.helper.message_profile_show_right', { username: record?.['vcard:given-name'] })}
+                {translate('app.helper.message_profile_show_right')}
               </Alert>
             </Box>
           )}

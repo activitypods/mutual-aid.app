@@ -77,7 +77,7 @@ module.exports = {
     },
     helper: {
       message_profile_show_right:
-        'Sending a message to %{username} will give him/her the right to see your profile, in order to be able to respond.',
+        'Sending a message to the poster will give him/her the right to see your profile, in order to be able to respond.',
       no_contact: 'You must add contacts to your network to be able to invite them',
     },
     message: {
