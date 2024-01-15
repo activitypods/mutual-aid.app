@@ -2,6 +2,7 @@
 
 module.exports = {
   app: {
+    backed_by_organization: 'Backed by %{organizationName}',
     action: {
       contact_organizer: 'Contact organizer',
       copy: 'Copy to clipboard',

@@ -2,6 +2,7 @@
 
 module.exports = {
   app: {
+    backed_by_organization: 'Proposé par %{organizationName}',
     action: {
       contact_organizer: "Contacter l'organisateur",
       copy: 'Copier dans votre presse-papier',
