@@ -20,8 +20,6 @@ import Edit from './crud/Edit';
 import Show from './crud/Show';
 import List from './crud/List';
 
-console.log('theme', theme);
-
 const customPodProviders = process.env.REACT_APP_POD_PROVIDER_DOMAIN_NAME
   && [{ 'apods:domainName': process.env.REACT_APP_POD_PROVIDER_DOMAIN_NAME, 'apods:area': 'Local' }];
 
@@ -39,7 +37,6 @@ const App = () => (
           i18nProvider={i18nProvider}
           loginPage={LoginPage}
           layout={Layout}
-          dashboard={HomePage}
           theme={theme}
           store={memoryStore()}
         >
@@ -51,9 +48,10 @@ const App = () => (
           <Resource name="Location" />
           <Resource name="Group" />
           <CustomRoutes>
-            <Route exact path="/r" component={RedirectPage} />,
+            <Route exact path="/r" element={<RedirectPage />} />,
           </CustomRoutes>
           <CustomRoutes noLayout>
+            <Route exact path="/" element={<HomePage />} />,
             {/* <Route path="/post" component={PostPage} />, */}
           </CustomRoutes>
         </Admin>

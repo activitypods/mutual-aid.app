@@ -53,7 +53,7 @@ const HomePage = ({ title }) => {
     if (!isLoading && identity?.id) {
       redirect('list', 'offers');
     }
-  }, [identity.id, isLoading, redirect])
+  }, [identity, isLoading, redirect])
 
   if (isLoading) return null;
 

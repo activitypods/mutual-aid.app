@@ -4,8 +4,9 @@ import { Box, ThemeProvider } from '@mui/material';
 import AppBar from './AppBar';
 import TopAppBar from './TopAppBar';
 import ScrollToTop from './ScrollToTop';
+import theme from '../config/theme';
 
-const Layout = ({ logout, theme, children, title }) => (
+const Layout = ({ logout, children, title }) => (
   <ThemeProvider theme={theme}>
     <ScrollToTop />
     <TopAppBar logout={logout} />
