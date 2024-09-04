@@ -4,26 +4,26 @@ import get from 'lodash/get';
 import { Box } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   divider: {
     paddingTop: 5,
     paddingBottom: 20,
     borderBottom: '1px lightgrey solid',
     '&:last-child': {
-      borderBottom: 'none',
-    },
-  },
+      borderBottom: 'none'
+    }
+  }
 }));
 
 const MainList = ({ children, divider, Label }) => {
   const translate = useTranslate();
   const classes = useStyles();
-  const { loaded, record, resource } = useShowContext();
-  if (!loaded) return null;
+  const { record, resource, isLoading } = useShowContext();
+  if (isLoading) return null;
 
   return (
     <Box>
-      {React.Children.map(children, (field) =>
+      {React.Children.map(children, field =>
         field && get(record, field.props.source) && React.isValidElement(field) ? (
           <div key={field.props.source} className={divider ? classes.divider : null}>
             {field.props.addLabel ? (
@@ -33,7 +33,7 @@ const MainList = ({ children, divider, Label }) => {
                     ...getFieldLabelTranslationArgs({
                       label: field.props.label,
                       resource,
-                      source: field.props.source,
+                      source: field.props.source
                     })
                   )}
                 </Label>

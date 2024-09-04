@@ -1,5 +1,5 @@
 {
-  "name": "lentraide.app",
+  "name": "mutual-aid.app",
   "private": true,
   "dependencies": {
     "@mui/styles": "^5.0.2",
@@ -13,6 +13,11 @@
     "@semapps/list-components": "0.8.0",
     "@semapps/markdown-components": "0.8.0",
     "@semapps/semantic-data-provider": "0.8.0",
+    "@tiptap/core": "^2.0.0-beta.95",
+    "@tiptap/extension-mention": "^2.0.0-beta.95",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.95",
+    "@tiptap/react": "^2.0.0-beta.95",
+    "@tiptap/suggestion": "^2.0.0-beta.95",
     "date-fns": "~2.8.1",
     "jwt-decode": "^3.1.2",
     "leaflet": "^1.8.0",
@@ -37,12 +42,9 @@
     "url-join": "^4.0.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "prettier": "^2.3.2",
     "react-scripts": "3.4.0",
-    "source-map-explorer": "^2.5.2"
+    "yalc": "1.0.0-pre.53"
   },
   "scripts": {
     "start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",

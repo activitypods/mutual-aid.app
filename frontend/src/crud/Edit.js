@@ -5,20 +5,20 @@ import EditPage from '../layout/EditPage';
 import Title from './Title';
 import ShowButton from '../commons/buttons/ShowButton';
 
-const addConditionClasses = (data) => {
-  if (data['mp:hasGeoCondition']) {
-    data['mp:hasGeoCondition'].type = 'mp:GeoCondition';
+const addConditionClasses = data => {
+  if (data['maid:hasGeoCondition']) {
+    data['maid:hasGeoCondition'].type = 'maid:GeoCondition';
   }
-  if (data['mp:hasTimeCondition']) {
-    data['mp:hasTimeCondition'].type = 'mp:TimeCondition';
+  if (data['maid:hasTimeCondition']) {
+    data['maid:hasTimeCondition'].type = 'maid:TimeCondition';
   }
-  if (data['mp:hasReciprocityCondition']) {
-    data['mp:hasReciprocityCondition'].type = 'mp:ReciprocityCondition';
+  if (data['maid:hasReciprocityCondition']) {
+    data['maid:hasReciprocityCondition'].type = 'maid:ReciprocityCondition';
   }
   return data;
 };
 
-const Edit = (props) => (
+const Edit = props => (
   <EditBase {...props} transform={addConditionClasses}>
     <EditPage title={<Title />} actions={<ShowButton />}>
       <Form component="div" />

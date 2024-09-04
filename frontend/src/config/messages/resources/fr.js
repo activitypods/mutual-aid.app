@@ -6,15 +6,15 @@ const offerAndRequestConfig = {
     'pair:description': 'Présentation',
     'dc:creator': 'Posté par',
     'dc:created': 'Date',
-    'mp:hasGeoCondition.pair:hasLocation': 'Localisation',
-    'mp:hasReciprocityCondition.mp:amount': 'Prix demandé',
-    'mp:hasReciprocityCondition.mp:maxAmount': 'Prix maximum',
-    'mp:hasReciprocityCondition.mp:currency': 'Devise',
-    'mp:hasReciprocityCondition.mp:inExchangeOf': 'En échange de',
-    'mp:hasTimeCondition.mp:maxDuration': 'Durée maximale du prêt',
-    'mp:hasTimeCondition.mp:minDuration': 'Durée minimale du prêt',
-    'mp:hasTimeCondition.mp:expirationDate': "Date d'expiration de l'annonce",
-  },
+    'maid:hasGeoCondition.pair:hasLocation': 'Localisation',
+    'maid:hasReciprocityCondition.maid:amount': 'Prix demandé',
+    'maid:hasReciprocityCondition.maid:maxAmount': 'Prix maximum',
+    'maid:hasReciprocityCondition.maid:currency': 'Devise',
+    'maid:hasReciprocityCondition.maid:inExchangeOf': 'En échange de',
+    'maid:hasTimeCondition.maid:maxDuration': 'Durée maximale du prêt',
+    'maid:hasTimeCondition.maid:minDuration': 'Durée minimale du prêt',
+    'maid:hasTimeCondition.maid:expirationDate': "Date d'expiration de l'annonce"
+  }
 };
 
 module.exports = {
@@ -22,5 +22,13 @@ module.exports = {
     OfferAndRequest: offerAndRequestConfig,
     offers: offerAndRequestConfig,
     requests: offerAndRequestConfig,
-  },
+    Location: {
+      name: 'Adresse |||| Adresses',
+      fields: {
+        'vcard:given-name': 'Nom du lieu',
+        'vcard:hasAddress': 'Adresse',
+        'vcard:note': 'Indications'
+      }
+    }
+  }
 };

@@ -1,32 +1,25 @@
 import React from 'react';
 import { useTranslate } from 'react-admin';
-import {
-  Typography,
-  Container,
-  IconButton,
-  Box,
-  Grid,
-  Button,
-} from '@mui/material';
+import { Typography, Container, IconButton, Box, Grid, Button } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { Link } from 'react-router-dom';
 import AppIcon from '../config/AppIcon';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   box: {
     display: 'flex',
     position: 'relative',
     alignItems: 'center',
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
     color: 'white',
     '& svg': {
-      fontSize: '4rem',
-    },
+      fontSize: '4rem'
+    }
   },
   beta: {
-    top: 2,
+    top: 2
   },
   title: {
     fontSize: 48,
@@ -35,22 +28,23 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 4,
     '& a': {
       color: 'white',
-      textDecoration: 'none',
-    },
+      textDecoration: 'none'
+    }
   },
   buttons: {
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
-      justifyContent: 'flex-end',
-    },
+      justifyContent: 'flex-end'
+    }
   },
   button: {
+    color: 'black',
     backgroundColor: 'white',
     [theme.breakpoints.down('xs')]: {
       width: '100%',
-      marginBottom: 16,
-    },
-  },
+      marginBottom: 16
+    }
+  }
 }));
 
 const AppBar = ({ title }) => {
@@ -67,9 +61,7 @@ const AppBar = ({ title }) => {
               </IconButton>
             </Link>
             <Typography variant="h4" className={classes.title}>
-              <Link to="/offers">
-                {title}
-              </Link>
+              <Link to="/offers">{title}</Link>
             </Typography>
           </Box>
         </Grid>

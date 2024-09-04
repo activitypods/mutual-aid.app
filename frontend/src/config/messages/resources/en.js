@@ -6,15 +6,15 @@ const offerAndRequestConfig = {
     'pair:description': 'Description',
     'dc:creator': 'Posted by',
     'dc:created': 'Date',
-    'mp:hasGeoCondition.pair:hasLocation': 'Location',
-    'mp:hasReciprocityCondition.mp:amount': 'Price',
-    'mp:hasReciprocityCondition.mp:maxAmount': 'Max price',
-    'mp:hasReciprocityCondition.mp:currency': 'Currency',
-    'mp:hasReciprocityCondition.mp:inExchangeOf': 'In exchange of',
-    'mp:hasTimeCondition.mp:maxDuration': 'Max loan duration',
-    'mp:hasTimeCondition.mp:minDuration': 'Min loan duration',
-    'mp:hasTimeCondition.mp:expirationDate': 'Expiration date',
-  },
+    'maid:hasGeoCondition.pair:hasLocation': 'Location',
+    'maid:hasReciprocityCondition.maid:amount': 'Price',
+    'maid:hasReciprocityCondition.maid:maxAmount': 'Max price',
+    'maid:hasReciprocityCondition.maid:currency': 'Currency',
+    'maid:hasReciprocityCondition.maid:inExchangeOf': 'In exchange of',
+    'maid:hasTimeCondition.maid:maxDuration': 'Max loan duration',
+    'maid:hasTimeCondition.maid:minDuration': 'Min loan duration',
+    'maid:hasTimeCondition.maid:expirationDate': 'Expiration date'
+  }
 };
 
 module.exports = {
@@ -22,5 +22,13 @@ module.exports = {
     OfferAndRequest: offerAndRequestConfig,
     offers: offerAndRequestConfig,
     requests: offerAndRequestConfig,
-  },
+    Location: {
+      name: 'Address |||| Addresses',
+      fields: {
+        'vcard:given-name': 'Name',
+        'vcard:hasAddress': 'Address',
+        'vcard:note': 'Comment'
+      }
+    }
+  }
 };

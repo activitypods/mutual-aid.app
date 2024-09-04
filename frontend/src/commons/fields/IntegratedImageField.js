@@ -3,13 +3,13 @@ import { Modal, Fade, Backdrop } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { useRecordContext } from 'react-admin';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   image: {
     marginTop: 16,
     marginLeft: 24,
     marginBottom: 24,
-    maxWidth: '330px',
-    maxHeight: '330px',
+    maxWidth: '300px',
+    maxHeight: '300px',
     float: 'right',
     cursor: 'pointer',
     [theme.breakpoints.down('xs')]: {
@@ -17,20 +17,20 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 0,
       float: 'unset',
       maxWidth: '100%',
-      maxHeight: 'unset',
-    },
+      maxHeight: 'unset'
+    }
   },
   modal: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     '&:hover': {
-      backgroundcolor: 'red',
-    },
+      backgroundcolor: 'red'
+    }
   },
   fade: {
-    outline: 'none',
-  },
+    outline: 'none'
+  }
 }));
 
 const IntegratedImageField = ({ source, title, ...rest }) => {
@@ -54,7 +54,7 @@ const IntegratedImageField = ({ source, title, ...rest }) => {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 500,
+          timeout: 500
         }}
       >
         <Fade in={open} timeout={500} className={classes.fade}>

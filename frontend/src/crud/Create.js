@@ -1,30 +1,30 @@
 import React from 'react';
-import {CreateBase, useTranslate} from 'react-admin';
+import { CreateBase, useTranslate } from 'react-admin';
 import Form from './Form';
 import CreatePage from '../layout/CreatePage';
 
-const addConditionClasses = (data) => {
-  if (data['mp:hasGeoCondition']) {
-    data['mp:hasGeoCondition'].type = 'mp:GeoCondition';
+const addConditionClasses = data => {
+  if (data['maid:hasGeoCondition']) {
+    data['maid:hasGeoCondition'].type = 'maid:GeoCondition';
   }
-  if (data['mp:hasTimeCondition']) {
-    data['mp:hasTimeCondition'].type = 'mp:TimeCondition';
+  if (data['maid:hasTimeCondition']) {
+    data['maid:hasTimeCondition'].type = 'maid:TimeCondition';
   }
-  if (data['mp:hasReciprocityCondition']) {
-    data['mp:hasReciprocityCondition'].type = 'mp:ReciprocityCondition';
+  if (data['maid:hasReciprocityCondition']) {
+    data['maid:hasReciprocityCondition'].type = 'maid:ReciprocityCondition';
   }
   return data;
 };
 
-const Create = (props) => {
+const Create = props => {
   const translate = useTranslate();
   return (
-    <CreateBase {...props} transform={addConditionClasses}>
-      <CreatePage title={translate("app.page.post")}>
+    <CreateBase {...props} transform={addConditionClasses} redirect="show">
+      <CreatePage title={translate('app.page.post')}>
         <Form component="div" />
       </CreatePage>
     </CreateBase>
   );
-}
+};
 
 export default Create;

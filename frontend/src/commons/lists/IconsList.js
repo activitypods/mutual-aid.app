@@ -3,63 +3,63 @@ import { List, ListItem, ListItemAvatar, ListItemText, Divider } from '@mui/mate
 import makeStyles from '@mui/styles/makeStyles';
 import { getFieldLabelTranslationArgs, useShowContext, useTranslate } from 'react-admin';
 
-const useStyles = makeStyles((theme) => ({
-  root: (props) => ({
+const useStyles = makeStyles(theme => ({
+  root: props => ({
     display: 'flex',
     flexDirection: props.isVertical ? 'column' : 'row',
     alignItems: props.isVertical ? undefined : 'flex-start',
-    padding: 0,
+    padding: 0
   }),
-  item: (props) => ({
+  item: props => ({
     flexGrow: 1,
     padding: props.isVertical ? '8px 0 8px 0' : '0 20px 0 16px',
     '&:first-child': {
-      padding: props.isVertical ? '0 0 8px 0 !important' : '0 20px 0 0 !important',
+      padding: props.isVertical ? '0 0 8px 0 !important' : '0 20px 0 0 !important'
     },
     '&:last-child': {
-      padding: props.isVertical ? '8px 0 0 0' : '0 0 0 16px',
-    },
+      padding: props.isVertical ? '8px 0 0 0' : '0 0 0 16px'
+    }
   }),
   avatar: {
-    minWidth: 40,
+    minWidth: 40
   },
   icon: {
-    fontSize: '2rem',
+    fontSize: '2rem'
   },
   divider: {
-    backgroundColor: 'black',
+    backgroundColor: 'black'
   },
-  primary: (props) => ({
-    whiteSpace: props.isVertical ? undefined : 'nowrap',
+  primary: props => ({
+    whiteSpace: props.isVertical ? undefined : 'nowrap'
   }),
-  secondary: (props) => ({
+  secondary: props => ({
     paddingTop: 2,
     fontSize: 14,
     whiteSpace: props.isVertical ? undefined : 'nowrap',
     '& a, & span': {
-      color: 'black',
-    },
-  }),
+      color: 'black'
+    }
+  })
 }));
 
 const primaryTypographyProps = {
-  variant: 'subtitle2',
+  variant: 'subtitle2'
 };
 const secondaryTypographyProps = {
   variant: 'body2',
-  color: 'textPrimary',
+  color: 'textPrimary'
 };
 
 const IconsList = ({ orientation, children }) => {
   const isVertical = orientation === 'vertical';
   const translate = useTranslate();
   const classes = useStyles({ isVertical });
-  const { loaded, record, resource } = useShowContext();
+  const { record, resource, isLoading } = useShowContext();
 
-  if (!loaded) return null;
+  if (isLoading) return null;
 
   const fields = React.Children.toArray(children).filter(
-    (field) => field && record[field.props.source] && React.isValidElement(field)
+    field => field && record[field.props.source] && React.isValidElement(field)
   );
 
   const dividerOrientation = isVertical ? 'horizontal' : 'vertical';
@@ -71,7 +71,7 @@ const IconsList = ({ orientation, children }) => {
           ...getFieldLabelTranslationArgs({
             label: field.props.label,
             resource,
-            source: field.props.source,
+            source: field.props.source
           })
         );
         return (
@@ -80,7 +80,7 @@ const IconsList = ({ orientation, children }) => {
               {field.props.icon && (
                 <ListItemAvatar className={classes.avatar}>
                   {React.cloneElement(field.props.icon, {
-                    className: classes.icon,
+                    className: classes.icon
                   })}
                 </ListItemAvatar>
               )}
@@ -103,7 +103,7 @@ const IconsList = ({ orientation, children }) => {
 };
 
 IconsList.defaultProps = {
-  orientation: 'horizontal',
+  orientation: 'horizontal'
 };
 
 export default IconsList;

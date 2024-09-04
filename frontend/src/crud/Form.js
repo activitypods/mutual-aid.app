@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   SimpleForm,
   TextInput,
   ImageField,
   required,
-  SelectInput,
   FormDataConsumer,
-  RadioButtonGroupInput, useTranslate,
+  RadioButtonGroupInput,
+  useTranslate
 } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ReferenceInput, ImageInput } from '@semapps/input-components';
+import { ImageInput } from '@semapps/input-components';
 import { DateTimeInput } from '@semapps/date-components';
 import frLocale from 'date-fns/locale/fr';
 import BodyLabel from '../commons/lists/BodyLabel';
+import QuickCreateLocationInput from '../commons/inputs/QuickCreateLocationInput/QuickCreateLocationInput';
 import { currencies } from '../config/constants';
+import { arrayOf } from '../utils';
 
-const futureDate = (value) => {
+const futureDate = value => {
   if (value && value <= new Date()) {
     return 'app.validation.futureDate';
   }
@@ -25,68 +27,81 @@ const dateTimeInputProps = {
   options: {
     format: 'dd/MM/yyyy à HH:mm',
     ampm: false,
-    clearable: true,
+    clearable: true
   },
   providerOptions: {
-    locale: frLocale,
+    locale: frLocale
   },
   fullWidth: true,
-  allowClear: true,
+  allowClear: true
 };
 
 const TypeCondition = ({ type, children, className, ...rest }) => (
   <FormDataConsumer subscription={{ values: true }}>
-    {({ formData, ...rest2 }) =>
-      (Array.isArray(type)
-        ? type.includes(formData.type) || type.includes(formData['@type'])
-        : formData.type === type || formData['@type'] === type) &&
-      React.Children.map(children, (child) => React.cloneElement(child, rest))
+    {({ formData }) =>
+      arrayOf(formData.type || formData['@type']).some(t => t === type) &&
+      React.Children.map(children, child => React.cloneElement(child, rest))
     }
   </FormDataConsumer>
 );
 
-const Form = (props) => {
+const Form = props => {
   const translate = useTranslate();
+
+  // Needed to trigger orm change and enable save button :
+  // https://codesandbox.io/s/react-admin-v3-advanced-recipes-quick-createpreview-voyci
+  const [locationVersion, setLocationVersion] = useState(0);
+  const handleLocationChange = useCallback(() => {
+    setLocationVersion(locationVersion + 1);
+  }, [locationVersion]);
+
   return (
     <SimpleForm {...props} redirect="show">
-      <TextInput source="pair:label" fullWidth validate={[required()]} />
+      <TextInput source="pair:label" fullWidth validate={[required()]} sx={{ mt: 2 }} />
       <MarkdownInput source="pair:description" fullWidth validate={[required()]} isRequired />
       <ImageInput source="pair:depictedBy" accept="image/*">
         <ImageField source="src" />
       </ImageInput>
-      <ReferenceInput reference="Location" source="mp:hasGeoCondition.pair:hasLocation" fullWidth>
-        <SelectInput optionText="vcard:given-name" />
-      </ReferenceInput>
-      <TypeCondition type="mp:SaleOffer">
+      <QuickCreateLocationInput
+        key={locationVersion}
+        reference="Location"
+        source="maid:hasGeoCondition.pair:hasLocation"
+        onChange={handleLocationChange}
+      />
+      <TypeCondition type="maid:SaleOffer">
         <BodyLabel>{translate('app.conditions.sale')}</BodyLabel>
-        <TextInput source="mp:hasReciprocityCondition.mp:amount" fullWidth />
+        <TextInput source="maid:hasReciprocityCondition.maid:amount" fullWidth />
         <RadioButtonGroupInput
-          source="mp:hasReciprocityCondition.mp:currency"
+          source="maid:hasReciprocityCondition.maid:currency"
           choices={Object.entries(currencies).map(([k, v]) => ({ id: k, name: v }))}
         />
       </TypeCondition>
-      <TypeCondition type="mp:PurchaseRequest">
+      <TypeCondition type="maid:PurchaseRequest">
         <BodyLabel>{translate('app.conditions.purchase')}</BodyLabel>
-        <TextInput source="mp:hasReciprocityCondition.mp:maxAmount" fullWidth />
+        <TextInput source="maid:hasReciprocityCondition.maid:maxAmount" fullWidth />
         <RadioButtonGroupInput
-          source="mp:hasReciprocityCondition.mp:currency"
+          source="maid:hasReciprocityCondition.maid:currency"
           choices={Object.entries(currencies).map(([k, v]) => ({ id: k, name: v }))}
         />
       </TypeCondition>
-      <TypeCondition type="mp:BarterOffer">
+      <TypeCondition type="maid:BarterOffer">
         <BodyLabel>{translate('app.conditions.barter')}</BodyLabel>
-        <TextInput source="mp:hasReciprocityCondition.mp:inExchangeOf" fullWidth />
+        <TextInput source="maid:hasReciprocityCondition.maid:inExchangeOf" fullWidth />
       </TypeCondition>
-      <TypeCondition type="mp:LoanOffer">
+      <TypeCondition type="maid:LoanOffer">
         <BodyLabel>{translate('app.conditions.loan')}</BodyLabel>
-        <TextInput source="mp:hasTimeCondition.mp:maxDuration" fullWidth />
+        <TextInput source="maid:hasTimeCondition.maid:maxDuration" fullWidth />
       </TypeCondition>
-      <TypeCondition type="mp:LoanRequest">
+      <TypeCondition type="maid:LoanRequest">
         <BodyLabel>{translate('app.conditions.borrowing')}</BodyLabel>
-        <TextInput source="mp:hasTimeCondition.mp:minDuration" fullWidth />
+        <TextInput source="maid:hasTimeCondition.maid:minDuration" fullWidth />
       </TypeCondition>
       <BodyLabel>{translate('app.conditions.other')}</BodyLabel>
-      <DateTimeInput source="mp:hasTimeCondition.mp:expirationDate" validate={[futureDate]} {...dateTimeInputProps} />
+      <DateTimeInput
+        source="maid:hasTimeCondition.maid:expirationDate"
+        validate={[futureDate]}
+        {...dateTimeInputProps}
+      />
     </SimpleForm>
   );
 };

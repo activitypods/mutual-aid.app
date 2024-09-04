@@ -1,55 +1,44 @@
 const dataModels = {
   OfferAndRequest: {
     types: [
-      'mp:GiftOffer',
-      'mp:BarterOffer',
-      'mp:LoanOffer',
-      'mp:SaleOffer',
-      'mp:Offer',
-      'mp:GiftRequest',
-      'mp:BarterRequest',
-      'mp:LoanRequest',
-      'mp:PurchaseRequest',
-      'mp:Request',
-    ],
-    list: {
-      dereference: ['mp:hasTimeCondition', 'mp:hasGeoCondition', 'mp:hasReciprocityCondition'],
-    },
+      'maid:GiftOffer',
+      'maid:BarterOffer',
+      'maid:LoanOffer',
+      'maid:SaleOffer',
+      'maid:Offer',
+      'maid:GiftRequest',
+      'maid:BarterRequest',
+      'maid:LoanRequest',
+      'maid:PurchaseRequest',
+      'maid:Request'
+    ]
   },
   offers: {
-    types: ['mp:GiftOffer', 'mp:BarterOffer', 'mp:LoanOffer', 'mp:SaleOffer', 'mp:Offer'],
-    list: {
-      dereference: ['mp:hasTimeCondition', 'mp:hasGeoCondition', 'mp:hasReciprocityCondition'],
-    },
+    types: ['maid:GiftOffer', 'maid:BarterOffer', 'maid:LoanOffer', 'maid:SaleOffer', 'maid:Offer']
   },
   requests: {
-    types: ['mp:GiftRequest', 'mp:BarterRequest', 'mp:LoanRequest', 'mp:PurchaseRequest', 'mp:Request'],
-    list: {
-      dereference: ['mp:hasTimeCondition', 'mp:hasGeoCondition', 'mp:hasReciprocityCondition'],
-    },
+    types: ['maid:GiftRequest', 'maid:BarterRequest', 'maid:LoanRequest', 'maid:PurchaseRequest', 'maid:Request']
   },
   Actor: {
     types: ['as:Actor'],
-    list: {},
+    list: {}
   },
   Profile: {
     types: ['vcard:Individual'],
-    list: {},
+    list: {}
   },
   Location: {
     types: ['vcard:Location'],
     list: {
-      servers: 'pod',
-      dereference: ['vcard:hasAddress/vcard:hasGeo'],
-    },
+      servers: 'pod'
+    }
   },
   Group: {
-    types: ["vcard:Group"],
+    types: ['vcard:Group'],
     list: {
-      servers: "pod",
-      blankNodes: ["vcard:hasMember"],
-      containers: { pod: ["/groups"] },
-    },
+      servers: 'pod',
+      containers: { pod: ['/groups'] }
+    }
   }
 };
 

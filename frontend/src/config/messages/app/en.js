@@ -4,20 +4,19 @@ module.exports = {
   app: {
     backed_by_organization: 'Backed by %{organizationName}',
     action: {
+      add_location: 'Add an address',
       contact_organizer: 'Contact organizer',
       copy: 'Copy to clipboard',
       continue: 'Continue',
       create_ad: 'Post an ad',
-      send: 'Send',
-      send_invitation: 'Send invitation |||| Send %{smart_count} invitations',
-      share: 'Share',
-      search: 'Search'
+      send: 'Send'
     },
     page: {
       post: 'Post an ad',
-      addresses: 'My addresses',
       network: 'My network',
-      profile: 'My profile',
+      apps: 'My applications',
+      data: 'My data',
+      settings: 'Settings'
     },
     modal: {
       share_ad: 'Share ad'
@@ -27,7 +26,8 @@ module.exports = {
       contact_poster_short: 'Contact',
       conditions: 'Conditions',
       welcome: 'Welcome to %{app_name}!',
-      welcome_text: "%{app_name} is a app for classified ads that are only visible to people who are part of your trusted network. Contrary to most of sites of this kind which are very \"business\" oriented, the main intention of this site is to help each other. This does not prevent you from buying or selling, because for the moment we all need money to live. Enjoy!"
+      welcome_text:
+        '%{app_name} is a app for classified ads that are only visible to people who are part of your trusted network. Contrary to most of sites of this kind which are very "business" oriented, the main intention of this site is to help each other. This does not prevent you from buying or selling, because for the moment we all need money to live. Enjoy!'
     },
     input: {
       about_you: 'A few words about you',
@@ -37,10 +37,10 @@ module.exports = {
       message: 'Message',
       user_id: 'User ID',
       resource_type: 'Resource type',
-      exchange_type: "Exchange type",
+      exchange_type: 'Exchange type'
     },
     choice: {
-      offer: "I offer",
+      offer: 'I offer',
       request: "I'm looking for",
       atom_based_resource: 'Material',
       human_based_resource: 'Human (service, skill...)',
@@ -50,7 +50,7 @@ module.exports = {
       sale: 'Sale',
       purchase: 'Purchase',
       loan: 'Loan',
-      borrowing: 'Borrowing',
+      borrowing: 'Borrowing'
     },
     conditions: {
       gift: 'Gift conditions',
@@ -74,12 +74,13 @@ module.exports = {
       rent_request: 'Rent request',
       atom_based_resource: 'Material',
       human_based_resource: 'Human',
-      other_resource: 'Other',
+      other_resource: 'Other'
     },
     helper: {
       message_profile_show_right:
         'Sending a message to the poster will give him/her the right to see your profile, in order to be able to respond.',
       no_contact: 'You must add contacts to your network to be able to invite them',
+      location_comment: 'Additional information to help attendees to find this place'
     },
     message: {
       copied_to_clipboard: 'Copied !'
@@ -87,19 +88,22 @@ module.exports = {
     notification: {
       invitation_sent: '1 invitation sent |||| %{smart_count} invitations sent',
       profile_data_not_found: "Your profile couldn't be found, please reconnect yourself",
-      user_not_found: "User %{username} doesn't exist",
+      user_not_found: "User %{username} doesn't exist"
     },
     permission: {
       view: 'Allowed to join',
-      share: 'Invite own contacts',
+      share: 'Invite own contacts'
     },
     time: {
       hours: '1 hour |||| %{smart_count} hours',
       minutes: '1 minute |||| %{smart_count} minutes',
-      days: '1 day |||| %{smart_count} days',
+      days: '1 day |||| %{smart_count} days'
+    },
+    user: {
+      location: "At %{surname}'s"
     },
     validation: {
       futureDate: 'Must be in the future'
-    },
-  },
+    }
+  }
 };

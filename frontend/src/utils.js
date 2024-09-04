@@ -1,4 +1,4 @@
-export const formatUsername = (uri) => {
+export const formatUsername = uri => {
   const url = new URL(uri);
   const username = url.pathname.split('/')[1];
   return '@' + username + '@' + url.host;
@@ -11,7 +11,7 @@ export const formatUsername = (uri) => {
  * @param {*} value A non-array value, an array or undefined.
  * @returns
  */
-export const arrayFromLdField = (value) => {
+export const arrayOf = value => {
   // If the field is null-ish, we suppose there are no values.
   if (!value) {
     return [];

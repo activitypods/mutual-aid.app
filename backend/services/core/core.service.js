@@ -5,7 +5,12 @@ const CONFIG = require('../../config/config');
 
 const maid = {
   prefix: 'maid',
-  namespace: 'https://mutual-aid.app/ns/core#'
+  namespace: 'https://mutual-aid.app/ns/core#',
+  jsonldContext: {
+    'maid:offerOfResourceType': {
+      '@type': '@id'
+    }
+  }
 };
 
 module.exports = {

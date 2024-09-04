@@ -1,21 +1,15 @@
 import React, { useCallback } from 'react';
-import { RadioButtonGroupInput, useTranslate, useRedirect } from 'react-admin';
+import { RadioButtonGroupInput, useTranslate, useRedirect, Form, FormDataConsumer } from 'react-admin';
 import { Toolbar, Button, Box, Typography, Container, Card } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import { Form, Field, FormSpy } from 'react-final-form';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   toolbar: {
-    backgroundColor: theme.palette.type === 'light' ? theme.palette.grey[100] : theme.palette.grey[900],
-  },
+    backgroundColor: 'white',
+    paddingLeft: 0
+  }
 }));
-
-const DirtyCondition = ({ what, children }) => (
-  <Field name={what} subscription={{ dirty: true }}>
-    {({ meta: { dirty } }) => (dirty ? children : null)}
-  </Field>
-);
 
 const getAvailableChoices = ({ type, resourceType }) => {
   let choices = [];
@@ -23,7 +17,7 @@ const getAvailableChoices = ({ type, resourceType }) => {
     choices = [
       { id: 'Gift', name: 'app.choice.gift' },
       { id: 'Barter', name: 'app.choice.barter' },
-      { id: 'Sale', name: 'app.choice.sale' },
+      { id: 'Sale', name: 'app.choice.sale' }
     ];
     if (resourceType !== 'HumanBasedResource') {
       choices.push({ id: 'Loan', name: 'app.choice.loan' });
@@ -32,7 +26,7 @@ const getAvailableChoices = ({ type, resourceType }) => {
     choices = [
       { id: 'Gift', name: 'app.choice.gift' },
       { id: 'Barter', name: 'app.choice.barter' },
-      { id: 'Purchase', name: 'app.choice.purchase' },
+      { id: 'Purchase', name: 'app.choice.purchase' }
     ];
     if (resourceType !== 'HumanBasedResource') {
       choices.push({ id: 'Loan', name: 'app.choice.borrowing' });
@@ -50,8 +44,8 @@ const PostPage = () => {
     ({ type, resourceType, exchangeType }) => {
       const basePath = type === 'Offer' ? '/offers' : '/requests';
       let source = {};
-      source['@type'] = 'mp:' + exchangeType + type;
-      source[`mp:${type.toLowerCase()}OfResourceType`] = 'pair:' + resourceType;
+      source['@type'] = ['maid:' + exchangeType + type, 'maid:' + type];
+      source[`maid:${type.toLowerCase()}OfResourceType`] = 'pair:' + resourceType;
       redirect(basePath + '/create?source=' + JSON.stringify(source));
     },
     [redirect]
@@ -62,53 +56,56 @@ const PostPage = () => {
       <Card>
         <Box p={3}>
           <Typography variant="h2">{translate('app.action.create_ad')}</Typography>
-          <Form
-            onSubmit={onSubmit}
-            render={({ handleSubmit, dirtyFields }) => (
-              <form onSubmit={handleSubmit}>
-                <Box display="flex" flexDirection="column">
-                  <RadioButtonGroupInput
-                    source="type"
-                    label=""
-                    choices={[
-                      { id: 'Offer', name: 'app.choice.offer' },
-                      { id: 'Request', name: 'app.choice.request' },
-                    ]}
-                  />
-                  <DirtyCondition what="type">
+          <Form onSubmit={onSubmit}>
+            <Box display="flex" flexDirection="column">
+              <RadioButtonGroupInput
+                source="type"
+                label=""
+                choices={[
+                  { id: 'Offer', name: 'app.choice.offer' },
+                  { id: 'Request', name: 'app.choice.request' }
+                ]}
+              />
+              <FormDataConsumer>
+                {({ formData }) =>
+                  formData.type && (
                     <RadioButtonGroupInput
                       source="resourceType"
                       label="app.input.resource_type"
                       choices={[
                         { id: 'AtomBasedResource', name: 'app.choice.atom_based_resource' },
                         { id: 'HumanBasedResource', name: 'app.choice.human_based_resource' },
-                        { id: 'Resource', name: 'app.choice.other_resource' },
+                        { id: 'Resource', name: 'app.choice.other_resource' }
                       ]}
                     />
-                  </DirtyCondition>
-                  <DirtyCondition what="resourceType">
-                    <FormSpy subscription={{ values: true }}>
-                      {({ values }) => {
-                        const choices = getAvailableChoices(values);
-                        return <RadioButtonGroupInput source="exchangeType" label="app.input.exchange_type" choices={choices} />;
-                      }}
-                    </FormSpy>
-                  </DirtyCondition>
-                </Box>
-                <Toolbar className={classes.toolbar}>
-                  <Button
-                    type="submit"
-                    endIcon={<ArrowForwardIcon />}
-                    variant="contained"
-                    color="primary"
-                    disabled={!dirtyFields.exchangeType}
-                  >
-                    {translate('app.action.continue')}
-                  </Button>
-                </Toolbar>
-              </form>
-            )}
-          />
+                  )
+                }
+              </FormDataConsumer>
+              <FormDataConsumer>
+                {({ formData }) => {
+                  if (formData.resourceType) {
+                    const choices = getAvailableChoices(formData);
+                    return (
+                      <RadioButtonGroupInput source="exchangeType" label="app.input.exchange_type" choices={choices} />
+                    );
+                  } else {
+                    return null;
+                  }
+                }}
+              </FormDataConsumer>
+            </Box>
+            <Toolbar className={classes.toolbar}>
+              <Button
+                type="submit"
+                endIcon={<ArrowForwardIcon />}
+                variant="contained"
+                color="primary"
+                // disabled={!dirtyFields.exchangeType}
+              >
+                {translate('app.action.continue')}
+              </Button>
+            </Toolbar>
+          </Form>
         </Box>
       </Card>
     </Container>

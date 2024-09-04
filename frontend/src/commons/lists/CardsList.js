@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { useListContext, useCreatePath, Link, DateField } from 'react-admin';
+import { useListContext, useCreatePath, Link, DateField, RecordContextProvider } from 'react-admin';
 import { Card, CardMedia, CardContent, Box, CircularProgress } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column'
     // marginTop: 5,
   },
   details: {
     display: 'flex',
     marginBottom: 15,
     [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column',
-    },
+      flexDirection: 'column'
+    }
   },
   image: {
     width: 180,
@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 145,
     backgroundColor: theme.palette.grey['300'],
     [theme.breakpoints.down('xs')]: {
-      width: '100%',
-    },
+      width: '100%'
+    }
   },
   date: {
     width: 180,
@@ -35,14 +35,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     [theme.breakpoints.down('xs')]: {
-      width: '100%',
+      width: '100%'
     },
     padding: 0,
-    color: 'white',
+    color: 'white'
   },
   day: {
     fontSize: 50,
-    lineHeight: 1.3,
+    lineHeight: 1.3
   },
   content: {
     flex: '1 0 auto',
@@ -50,14 +50,14 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 10,
     paddingBottom: '16px !important',
     [theme.breakpoints.down('xs')]: {
-      padding: 10,
-    },
-  },
+      padding: 10
+    }
+  }
 }));
 
 const CardsList = ({ CardComponent, link }) => {
   const classes = useStyles();
-  const { ids, data, isLoading } = useListContext();
+  const { data, isLoading } = useListContext();
   const createPath = useCreatePath();
 
   return isLoading ? (
@@ -65,42 +65,51 @@ const CardsList = ({ CardComponent, link }) => {
       <CircularProgress color="secondary" />
     </Box>
   ) : (
-    ids
-      .filter((id) => data[id])
-      .map((id) => {
-        const image = data[id]['pair:depictedBy'];
-        const resource = data[id].type.endsWith('Offer') ? 'Offer' : 'Request';
-        return (
-          <Link key={id} to={createPath({ resource, type: link, id })} className={classes.root}>
-            <Card key={id} className={classes.details}>
+    data.map(record => {
+      const image = record['pair:depictedBy'];
+      const resource = record.type.endsWith('Offer') ? 'offers' : 'requests';
+      return (
+        <Link key={record.id} to={createPath({ resource, type: link, id: record.id })} className={classes.root}>
+          <Card key={record.id} className={classes.details}>
+            <RecordContextProvider value={record}>
               {image ? (
                 <CardMedia className={classes.image} image={Array.isArray(image) ? image[0] : image} />
               ) : (
                 <CardContent className={classes.date}>
-                  <DateField record={data[id]} variant="subtitle1" source="dc:created" locales={process.env.REACT_APP_LANG} options={{ weekday: 'long' }} />
                   <DateField
-                    record={data[id]}
+                    variant="subtitle1"
+                    source="dc:created"
+                    locales={process.env.REACT_APP_LANG}
+                    options={{ weekday: 'long' }}
+                  />
+                  <DateField
                     variant="h4"
                     source="dc:created"
                     locales={process.env.REACT_APP_LANG}
                     options={{ day: 'numeric' }}
                     className={classes.day}
                   />
-                  <DateField record={data[id]} variant="subtitle1" source="dc:created" locales={process.env.REACT_APP_LANG} options={{ month: 'long' }} />
+                  <DateField
+                    variant="subtitle1"
+                    source="dc:created"
+                    locales={process.env.REACT_APP_LANG}
+                    options={{ month: 'long' }}
+                  />
                 </CardContent>
               )}
               <CardContent className={classes.content}>
-                <CardComponent record={data[id]} />
+                <CardComponent />
               </CardContent>
-            </Card>
-          </Link>
-        );
-      })
+            </RecordContextProvider>
+          </Card>
+        </Link>
+      );
+    })
   );
 };
 
 CardsList.defaultProps = {
-  link: 'show',
+  link: 'show'
 };
 
 export default CardsList;

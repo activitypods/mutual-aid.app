@@ -1,31 +1,32 @@
 import * as React from 'react';
 import { Chip as MuiChip } from '@mui/material';
-import makeStyles from '@mui/styles/makeStyles';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: 'unset',
-    height: 20,
-  },
-  icon: {
-    width: 14,
-    height: 14,
-    marginLeft: 0,
-    marginRight: 0,
-  },
-  label: {
-    paddingLeft: 4,
-    paddingRight: 16,
-    '& span': {
-      fontSize: 12,
-      fontWeight: 'bold',
-    },
-  },
-}));
 
 const Chip = ({ children, ...rest }) => {
-  const classes = useStyles();
-  return <MuiChip size="small" label={children} classes={classes} {...rest} />;
+  return (
+    <MuiChip
+      size="small"
+      label={children}
+      sx={{
+        backgroundColor: 'unset',
+        height: 20,
+        '& .MuiChip-icon': {
+          width: 14,
+          height: 14,
+          marginLeft: 0,
+          marginRight: 0
+        },
+        '& .MuiChip-label': {
+          paddingLeft: 0.5,
+          paddingRight: 2,
+          '& span': {
+            fontSize: '12px',
+            fontWeight: 'bold'
+          }
+        }
+      }}
+      {...rest}
+    />
+  );
 };
 
 export default Chip;

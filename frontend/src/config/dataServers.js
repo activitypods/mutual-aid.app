@@ -14,7 +14,7 @@ const dataServers = {
         'vcard:Group': ['/vcard/group']
       }
     },
-    uploadsContainer: '/files'
+    uploadsContainer: '/semapps/file'
   }
 };
 

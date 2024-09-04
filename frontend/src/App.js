@@ -9,7 +9,7 @@ import dataProvider from './config/dataProvider';
 import i18nProvider from './config/i18nProvider';
 
 import HomePage from './pages/HomePage';
-// import PostPage from './pages/PostPage';
+import PostPage from './pages/PostPage';
 
 import Layout from './layout/Layout';
 import theme from './config/theme';
@@ -47,10 +47,11 @@ const App = () => (
         <Resource name="Location" />
         <Resource name="Group" />
         <CustomRoutes>
-          <Route exact path="/r" element={<RedirectPage />} />,
+          <Route path="/post" element={<PostPage />} />
         </CustomRoutes>
         <CustomRoutes noLayout>
-          <Route exact path="/" element={<HomePage />} />,{/* <Route path="/post" component={PostPage} />, */}
+          <Route exact path="/r" element={<RedirectPage />} />
+          <Route exact path="/" element={<HomePage />} />
         </CustomRoutes>
       </Admin>
     </BrowserRouter>

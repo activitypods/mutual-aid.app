@@ -8,8 +8,8 @@ const EditButton = () => {
   const createPath = useCreatePath();
   const translate = useTranslate();
 
-  return !!permissions && permissions.some((p) => ['acl:Append', 'acl:Write'].includes(p['acl:mode'])) ? (
-    <Link to={createPath({ resource, type: 'show', id: record?.id })}>
+  return !!permissions && permissions.some(p => ['acl:Append', 'acl:Write'].includes(p['acl:mode'])) ? (
+    <Link to={createPath({ resource, type: 'edit', id: record?.id })}>
       <Button label={translate('ra.action.edit')}>
         <EditIcon />
       </Button>
