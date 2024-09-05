@@ -12,11 +12,7 @@ module.exports = {
       send: 'Send'
     },
     page: {
-      post: 'Post an ad',
-      network: 'My network',
-      apps: 'My applications',
-      data: 'My data',
-      settings: 'Settings'
+      post: 'Post an ad'
     },
     modal: {
       share_ad: 'Share ad'
@@ -83,12 +79,14 @@ module.exports = {
       location_comment: 'Additional information to help attendees to find this place'
     },
     message: {
-      copied_to_clipboard: 'Copied !'
+      copied_to_clipboard: 'Copied !',
+      title: `%{username} writes you about "%{resource}"`
     },
     notification: {
       invitation_sent: '1 invitation sent |||| %{smart_count} invitations sent',
       profile_data_not_found: "Your profile couldn't be found, please reconnect yourself",
-      user_not_found: "User %{username} doesn't exist"
+      user_not_found: "User %{username} doesn't exist",
+      message_sent: 'Message successfully sent'
     },
     permission: {
       view: 'Allowed to join',

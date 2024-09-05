@@ -1,4 +1,4 @@
-const { ACTIVITY_TYPES, OBJECT_TYPES } = require('@semapps/activitypub');
+const { ACTIVITY_TYPES } = require('@semapps/activitypub');
 const { PodActivitiesHandlerMixin } = require('@activitypods/app');
 const { arrayOf } = require('@semapps/ldp');
 

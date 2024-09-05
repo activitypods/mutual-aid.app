@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useListContext, useCreatePath, Link, DateField, RecordContextProvider } from 'react-admin';
 import { Card, CardMedia, CardContent, Box, CircularProgress } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
+import { arrayOf } from '../../utils';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -67,7 +68,7 @@ const CardsList = ({ CardComponent, link }) => {
   ) : (
     data.map(record => {
       const image = record['pair:depictedBy'];
-      const resource = record.type.endsWith('Offer') ? 'offers' : 'requests';
+      const resource = arrayOf(record.type).includes('maid:Offer') ? 'offers' : 'requests';
       return (
         <Link key={record.id} to={createPath({ resource, type: link, id: record.id })} className={classes.root}>
           <Card key={record.id} className={classes.details}>

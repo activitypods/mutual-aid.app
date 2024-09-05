@@ -12,11 +12,7 @@ module.exports = {
       send: 'Envoyer'
     },
     page: {
-      post: 'Poster une annonce',
-      network: 'Mon réseau',
-      apps: 'Mes applis',
-      data: 'Mes données',
-      settings: 'Paramètres'
+      post: 'Poster une annonce'
     },
     modal: {
       share_ad: "Partager l'annonce"
@@ -83,12 +79,14 @@ module.exports = {
       location_comment: 'Indications supplémentaires pour aider les invités à trouver ce lieu'
     },
     message: {
-      copied_to_clipboard: 'Copié !'
+      copied_to_clipboard: 'Copié !',
+      title: `%{username} vous écrit au sujet de "%{resource}"`
     },
     notification: {
       invitation_sent: '1 invitation envoyée |||| %{smart_count} invitations envoyées',
       profile_data_not_found: "Votre profil n'a pas été trouvé, veuillez vous déconnecter et vous reconnecter",
-      user_not_found: "L'utilisateur %{username} n'existe pas"
+      user_not_found: "L'utilisateur %{username} n'existe pas",
+      message_sent: 'Message envoyé avec succès'
     },
     permission: {
       view: "Droit de s'inscrire",

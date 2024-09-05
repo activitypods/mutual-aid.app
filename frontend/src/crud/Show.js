@@ -47,14 +47,15 @@ const Show = () => {
               currency="maid:hasReciprocityCondition.maid:currency"
               currencies={currencies}
             />
-            <TextField source="maid:hasTimeCondition.maid:maxDuration" variant="body1" />
-            <TextField source="maid:hasReciprocityCondition.maid:inExchangeOf" variant="body1" />
+            <TextField source="maid:hasTimeCondition.maid:maxDuration" variant="body1" addLabel />
+            <TextField source="maid:hasReciprocityCondition.maid:inExchangeOf" variant="body1" addLabel />
             <DateField
               showTime
               source="maid:hasTimeCondition.maid:expirationDate"
               locales={process.env.REACT_APP_LANG}
               options={{ year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }}
               variant="body1"
+              addLabel
             />
           </BulletPointsListField>
           <LocationField source="maid:hasGeoCondition.pair:hasLocation" />

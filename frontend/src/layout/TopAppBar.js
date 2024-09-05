@@ -2,9 +2,9 @@ import React from 'react';
 import { useGetIdentity } from 'react-admin';
 import { Typography, AppBar as MuiAppBar, Toolbar } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
-import UserMenu from './UserMenu';
+import { UserMenu } from '@activitypods/react';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#585858',

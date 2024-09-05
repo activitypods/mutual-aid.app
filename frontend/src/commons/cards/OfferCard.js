@@ -4,11 +4,12 @@ import { Box } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { ReferenceField } from '@semapps/field-components';
 import EventIcon from '@mui/icons-material/Event';
-import { resourceTypes, types } from '../../config/constants';
 import Chip from '../Chip';
 import SyncIcon from '@mui/icons-material/Sync';
 import NaturePeopleOutlinedIcon from '@mui/icons-material/NaturePeopleOutlined';
 import FaceIcon from '@mui/icons-material/Face';
+import ExchangeTypeField from '../fields/ExchangeTypeField';
+import { resourceTypes } from '../../config/constants';
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -39,7 +40,7 @@ const OfferCard = () => {
       </Box>
       <Box>
         <Chip icon={<SyncIcon />}>
-          <SelectField source="type" choices={Object.entries(types).map(([k, v]) => ({ id: k, name: v }))} />
+          <ExchangeTypeField source="type" />
         </Chip>
         <Chip icon={<NaturePeopleOutlinedIcon />}>
           <SelectField

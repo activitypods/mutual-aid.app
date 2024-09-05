@@ -1,21 +1,11 @@
 import React from 'react';
-import { SelectField, DateField, useRecordContext, useTranslate } from 'react-admin';
-import { Typography } from '@mui/material';
+import { SelectField, DateField } from 'react-admin';
 import IconsList from '../commons/lists/IconsList';
 import EventIcon from '@mui/icons-material/Event';
 import NaturePeopleOutlinedIcon from '@mui/icons-material/NaturePeopleOutlined';
 import SyncIcon from '@mui/icons-material/Sync';
-import { types, resourceTypes } from '../config/constants';
-import { arrayOf } from '../utils';
-
-// Select the specialized type (not maid:Offer nor maid:Request)
-const ExchangeTypeField = ({ source }) => {
-  const translate = useTranslate();
-  const record = useRecordContext();
-  const recordTypes = arrayOf(record[source]);
-  const label = Object.entries(types).find(([t]) => recordTypes.includes(t))[1];
-  return <Typography component="span">{translate(label)}</Typography>;
-};
+import ExchangeTypeField from '../commons/fields/ExchangeTypeField';
+import { resourceTypes } from '../config/constants';
 
 const Details = props => {
   return (
@@ -23,6 +13,12 @@ const Details = props => {
       <ExchangeTypeField source="type" label="app.input.exchange_type" icon={<SyncIcon />} />
       <SelectField
         source="maid:offerOfResourceType"
+        label="app.input.resource_type"
+        choices={Object.entries(resourceTypes).map(([k, v]) => ({ id: k, name: v }))}
+        icon={<NaturePeopleOutlinedIcon />}
+      />
+      <SelectField
+        source="maid:requestOfResourceType"
         label="app.input.resource_type"
         choices={Object.entries(resourceTypes).map(([k, v]) => ({ id: k, name: v }))}
         icon={<NaturePeopleOutlinedIcon />}
