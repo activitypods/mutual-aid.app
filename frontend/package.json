@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@mui/styles": "^5.0.2",
-    "@activitypods/react": "2.0.0-alpha.15",
+    "@activitypods/react": "2.0.0-alpha.16",
     "@semapps/activitypub-components": "0.8.1",
     "@semapps/auth-provider": "0.8.1",
     "@semapps/date-components": "0.8.1",
