@@ -8,8 +8,8 @@ const ExchangeTypeField = ({ source }) => {
   const translate = useTranslate();
   const record = useRecordContext();
   const recordTypes = arrayOf(record[source]);
-  const label = Object.entries(types).find(([t]) => recordTypes.includes(t))[1];
-  return <Typography component="span">{translate(label)}</Typography>;
+  const label = Object.entries(types).find(([t]) => recordTypes.includes(t));
+  return label?.[1] ? <Typography component="span">{translate(label[1])}</Typography> : null;
 };
 
 export default ExchangeTypeField;

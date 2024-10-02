@@ -1,9 +1,11 @@
 export const types = {
+  'maid:Offer': 'app.types.offer',
   'maid:SaleOffer': 'app.types.sale_offer',
   'maid:BarterOffer': 'app.types.barter_offer',
   'maid:LoanOffer': 'app.types.loan_offer',
   'maid:GiftOffer': 'app.types.gift_offer',
   'maid:RentOffer': 'app.types.rent_offer',
+  'maid:Request': 'app.types.request',
   'maid:PurchaseRequest': 'app.types.purchase_request',
   'maid:BarterRequest': 'app.types.barter_request',
   'maid:LoanRequest': 'app.types.loan_request',
