@@ -7,8 +7,15 @@ const maid = {
   prefix: 'maid',
   namespace: 'https://mutual-aid.app/ns/core#',
   jsonldContext: {
+    xsd: 'http://www.w3.org/2001/XMLSchema#',
     'maid:offerOfResourceType': {
       '@type': '@id'
+    },
+    'maid:requestOfResourceType': {
+      '@type': '@id'
+    },
+    'maid:expirationDate': {
+      '@type': 'xsd:dateTime'
     }
   }
 };
