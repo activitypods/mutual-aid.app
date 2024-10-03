@@ -8,8 +8,7 @@ import Chip from '../Chip';
 import SyncIcon from '@mui/icons-material/Sync';
 import NaturePeopleOutlinedIcon from '@mui/icons-material/NaturePeopleOutlined';
 import FaceIcon from '@mui/icons-material/Face';
-import ExchangeTypeField from '../fields/ExchangeTypeField';
-import { resourceTypes } from '../../config/constants';
+import { resourceTypes, exchangeTypes } from '../../config/constants';
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -40,13 +39,15 @@ const OfferCard = () => {
       </Box>
       <Box>
         <Chip icon={<SyncIcon />}>
-          <ExchangeTypeField source="type" />
+          <SelectField
+            source="pair:hasType"
+            choices={Object.entries(exchangeTypes).map(([k, v]) => ({ id: k, name: v }))}
+          />
         </Chip>
         <Chip icon={<NaturePeopleOutlinedIcon />}>
           <SelectField
             source="maid:offerOfResourceType"
             choices={Object.entries(resourceTypes).map(([k, v]) => ({ id: k, name: v }))}
-            icon={<NaturePeopleOutlinedIcon />}
           />
         </Chip>
         <Chip icon={<EventIcon />}>

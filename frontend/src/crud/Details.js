@@ -4,13 +4,17 @@ import IconsList from '../commons/lists/IconsList';
 import EventIcon from '@mui/icons-material/Event';
 import NaturePeopleOutlinedIcon from '@mui/icons-material/NaturePeopleOutlined';
 import SyncIcon from '@mui/icons-material/Sync';
-import ExchangeTypeField from '../commons/fields/ExchangeTypeField';
-import { resourceTypes } from '../config/constants';
+import { resourceTypes, exchangeTypes } from '../config/constants';
 
 const Details = props => {
   return (
     <IconsList {...props}>
-      <ExchangeTypeField source="type" label="app.input.exchange_type" icon={<SyncIcon />} />
+      <SelectField
+        source="pair:hasType"
+        label="app.input.exchange_type"
+        choices={Object.entries(exchangeTypes).map(([k, v]) => ({ id: k, name: v }))}
+        icon={<SyncIcon />}
+      />
       <SelectField
         source="maid:offerOfResourceType"
         label="app.input.resource_type"

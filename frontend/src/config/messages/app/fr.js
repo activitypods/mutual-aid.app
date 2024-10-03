@@ -58,13 +58,11 @@ module.exports = {
       other: 'Autres conditions'
     },
     types: {
-      offer: 'Offre',
       sale_offer: 'Offre de vente',
       barter_offer: 'Offre de troc',
       loan_offer: 'Offre de prêt',
       gift_offer: 'Offre de don',
       rent_offer: 'Offre de location',
-      request: 'Demande',
       purchase_request: "Demande d'achat",
       barter_request: 'Demande de troc',
       loan_request: 'Demande de prêt',

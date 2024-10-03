@@ -44,7 +44,8 @@ const PostPage = () => {
     ({ type, resourceType, exchangeType }) => {
       const basePath = type === 'Offer' ? '/offers' : '/requests';
       let source = {};
-      source['@type'] = ['maid:' + exchangeType + type, 'maid:' + type];
+      source['@type'] = 'maid:' + type;
+      source['pair:hasType'] = 'maid:' + exchangeType + type;
       source[`maid:${type.toLowerCase()}OfResourceType`] = 'pair:' + resourceType;
       redirect(basePath + '/create?source=' + JSON.stringify(source));
     },

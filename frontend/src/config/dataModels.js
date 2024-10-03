@@ -1,23 +1,12 @@
 const dataModels = {
   OfferAndRequest: {
-    types: [
-      'maid:GiftOffer',
-      'maid:BarterOffer',
-      'maid:LoanOffer',
-      'maid:SaleOffer',
-      'maid:Offer',
-      'maid:GiftRequest',
-      'maid:BarterRequest',
-      'maid:LoanRequest',
-      'maid:PurchaseRequest',
-      'maid:Request'
-    ]
+    types: ['maid:Offer', 'maid:Request']
   },
   offers: {
-    types: ['maid:GiftOffer', 'maid:BarterOffer', 'maid:LoanOffer', 'maid:SaleOffer', 'maid:Offer']
+    types: ['maid:Offer']
   },
   requests: {
-    types: ['maid:GiftRequest', 'maid:BarterRequest', 'maid:LoanRequest', 'maid:PurchaseRequest', 'maid:Request']
+    types: ['maid:Request']
   },
   Actor: {
     types: ['as:Actor'],
