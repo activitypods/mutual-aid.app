@@ -13,6 +13,7 @@ import PostPage from './pages/PostPage';
 
 import Layout from './layout/Layout';
 import theme from './config/theme';
+import ontologies from './config/ontologies.json';
 
 import Create from './crud/Create';
 import Edit from './crud/Edit';
@@ -50,7 +51,7 @@ const App = () => (
           <Route path="/post" element={<PostPage />} />
         </CustomRoutes>
         <CustomRoutes noLayout>
-          <Route exact path="/r" element={<RedirectPage />} />
+          <Route exact path="/r" element={<RedirectPage ontologies={ontologies} />} />
           <Route exact path="/" element={<HomePage />} />
         </CustomRoutes>
       </Admin>
