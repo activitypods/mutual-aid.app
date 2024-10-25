@@ -7,7 +7,7 @@ const CreatePage = ({ title, actions, children, ...rest }) => {
   return (
     <Container maxWidth="md">
       <Card>
-        <Box p={3}>
+        <Box p={{ xs: 2, sm: 3 }} pb={{ xs: 5, sm: 3 }}>
           <Typography variant="h2">{title}</Typography>
           {React.cloneElement(children, { ...createContext, component: 'div' })}
         </Box>

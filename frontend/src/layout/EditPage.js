@@ -27,7 +27,7 @@ const EditPage = ({ undoable, mutationMode, title, actions, className, hasDelete
   return (
     <Container maxWidth="md">
       <Card>
-        <Box p={3}>
+        <Box p={{ xs: 2, sm: 3 }} pb={{ xs: 5, sm: 3 }}>
           <Grid container>
             <Grid item xs={8}>
               <Typography variant="h2">
