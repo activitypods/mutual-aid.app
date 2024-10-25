@@ -2,7 +2,7 @@ import React from 'react';
 import { useEditContext, Toolbar, SaveButton } from 'react-admin';
 import { Container, Typography, Card, Box, Grid, useMediaQuery } from '@mui/material';
 
-const NoDeleteToolbar = (props) => (
+const NoDeleteToolbar = props => (
   <Toolbar {...props}>
     <SaveButton />
   </Toolbar>
@@ -18,9 +18,9 @@ const EditPage = ({ undoable, mutationMode, title, actions, className, hasDelete
     resource,
     save,
     saving,
-    version,
+    version
   } = useEditContext(rest);
-  const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
+  const xs = useMediaQuery(theme => theme.breakpoints.down('sm'), { noSsr: true });
 
   if (!record) return null;
 
@@ -50,7 +50,7 @@ const EditPage = ({ undoable, mutationMode, title, actions, className, hasDelete
             version,
             redirect,
             component: 'div',
-            toolbar: hasDelete ? undefined : <NoDeleteToolbar />,
+            toolbar: hasDelete ? undefined : <NoDeleteToolbar />
           })}
         </Box>
       </Card>

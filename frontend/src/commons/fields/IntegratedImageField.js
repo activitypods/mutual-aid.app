@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '300px',
     float: 'right',
     cursor: 'pointer',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       marginLeft: 0,
       marginBottom: 0,
       float: 'unset',

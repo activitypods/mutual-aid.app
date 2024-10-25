@@ -33,7 +33,7 @@ const theme = createTheme({
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '70px',
-      [defaultTheme.breakpoints.down('xs')]: {
+      [defaultTheme.breakpoints.down('sm')]: {
         fontSize: 32,
         lineHeight: '46px'
       }
@@ -44,7 +44,7 @@ const theme = createTheme({
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: 1.15,
-      [defaultTheme.breakpoints.down('xs')]: {
+      [defaultTheme.breakpoints.down('sm')]: {
         fontSize: 28
       }
     },
@@ -54,7 +54,7 @@ const theme = createTheme({
       fontStyle: 'normal',
       fontWeight: 'normal',
       lineHeight: '44px',
-      [defaultTheme.breakpoints.down('xs')]: {
+      [defaultTheme.breakpoints.down('sm')]: {
         fontSize: 18,
         lineHeight: '26px'
       }

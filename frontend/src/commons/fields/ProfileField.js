@@ -4,21 +4,21 @@ import { Grid, Avatar, Typography } from '@mui/material';
 import makeStyles from '@mui/styles/makeStyles';
 import { formatUsername } from '../../utils';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   username: {
-    fontStyle: 'italic',
+    fontStyle: 'italic'
   },
   note: {
-    marginTop: 10,
+    marginTop: 10
   },
   avatar: {
     width: 110,
     height: 110,
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       width: 80,
-      height: 80,
-    },
-  },
+      height: 80
+    }
+  }
 }));
 
 const ProfileField = ({ label, source, ...rest }) => {
@@ -43,7 +43,7 @@ const ProfileField = ({ label, source, ...rest }) => {
 };
 
 ProfileField.defaultProps = {
-  addLabel: true,
+  addLabel: true
 };
 
 export default ProfileField;

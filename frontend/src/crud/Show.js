@@ -20,7 +20,7 @@ import Title from './Title';
 
 const Show = () => {
   const { identity } = useCheckAuthenticated();
-  const xs = useMediaQuery(theme => theme.breakpoints.down('xs'), { noSsr: true });
+  const xs = useMediaQuery(theme => theme.breakpoints.down('sm'), { noSsr: true });
   if (!identity?.id) return null;
   return (
     <ShowBase>

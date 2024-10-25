@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     color: 'black',
     backgroundColor: 'white',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       width: '100%',
       marginBottom: 16
     }

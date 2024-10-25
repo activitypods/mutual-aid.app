@@ -5,7 +5,7 @@ import IntegratedImageField from '../commons/fields/IntegratedImageField';
 
 const ShowPage = ({ title, defaultTitle, details, actions, children, ...rest }) => {
   const showContext = useShowContext(rest);
-  const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
+  const xs = useMediaQuery(theme => theme.breakpoints.down('sm'), { noSsr: true });
   return (
     <Container maxWidth="md">
       <Card>
