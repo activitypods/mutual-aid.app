@@ -1,12 +1,12 @@
 const dataModels = {
-  OfferAndRequest: {
-    types: ['maid:Offer', 'maid:Request']
-  },
   offers: {
     types: ['maid:Offer']
   },
   requests: {
     types: ['maid:Request']
+  },
+  OfferAndRequest: {
+    types: ['maid:Offer', 'maid:Request']
   },
   Actor: {
     types: ['as:Actor'],
