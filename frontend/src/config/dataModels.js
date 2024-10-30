@@ -26,7 +26,8 @@ const dataModels = {
     types: ['vcard:Group'],
     list: {
       servers: 'pod',
-      containers: { pod: ['/groups'] }
+      blankNodes: ['vcard:hasMember'],
+      containers: { pod: ['/vcard/group'] }
     }
   }
 };
