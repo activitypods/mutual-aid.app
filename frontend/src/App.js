@@ -2,7 +2,7 @@ import React from 'react';
 import { Admin, Resource, CustomRoutes, memoryStore } from 'react-admin';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
-import { PodLoginPage, RedirectPage } from '@activitypods/react';
+import { LoginPage, RedirectPage } from '@activitypods/react';
 
 import authProvider from './config/authProvider';
 import dataProvider from './config/dataProvider';
@@ -20,11 +20,17 @@ import Edit from './crud/Edit';
 import Show from './crud/Show';
 import List from './crud/List';
 
-const customPodProviders = process.env.REACT_APP_POD_PROVIDER_BASE_URL && [
-  { 'apods:baseUrl': process.env.REACT_APP_POD_PROVIDER_BASE_URL, 'apods:area': 'Local' }
-];
-
-const LoginPage = props => <PodLoginPage customPodProviders={customPodProviders} {...props} />;
+const MyLoginPage = props => (
+  <LoginPage
+    customPodProviders={
+      process.env.REACT_APP_POD_PROVIDER_BASE_URL && [
+        { 'apods:baseUrl': process.env.REACT_APP_POD_PROVIDER_BASE_URL, 'apods:area': 'Local' }
+      ]
+    }
+    clientId={process.env.REACT_APP_BACKEND_CLIENT_ID}
+    {...props}
+  />
+);
 
 const App = () => (
   <StyledEngineProvider injectFirst>
@@ -35,7 +41,7 @@ const App = () => (
         authProvider={authProvider}
         dataProvider={dataProvider}
         i18nProvider={i18nProvider}
-        loginPage={LoginPage}
+        loginPage={MyLoginPage}
         layout={Layout}
         theme={theme}
         store={memoryStore()}
