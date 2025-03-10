@@ -18,6 +18,7 @@
     "@tiptap/extension-placeholder": "^2.0.0-beta.95",
     "@tiptap/react": "^2.0.0-beta.95",
     "@tiptap/suggestion": "^2.0.0-beta.95",
+    "change-case": "^5.4.4",
     "date-fns": "~2.8.1",
     "jwt-decode": "^3.1.2",
     "leaflet": "^1.8.0",
@@ -43,13 +44,12 @@
   },
   "devDependencies": {
     "prettier": "^2.3.2",
-    "react-scripts": "3.4.0",
+    "react-scripts": "^5.0.1",
     "yalc": "1.0.0-pre.53"
   },
   "scripts": {
     "dev": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
     "build": "export GENERATE_SOURCEMAP=false NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "prettier": "prettier --single-quote --print-width 120 --write '**/*.js'",
