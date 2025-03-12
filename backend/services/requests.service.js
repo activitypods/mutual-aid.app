@@ -6,7 +6,6 @@ module.exports = {
   name: 'requests',
   mixins: [PodResourcesHandlerMixin],
   settings: {
-    type: 'maid:Request',
     shapeTreeUri: urlJoin(CONFIG.SHAPE_REPOSITORY_URL, 'shapetrees/maid/Request')
   },
   methods: {

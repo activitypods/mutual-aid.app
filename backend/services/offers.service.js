@@ -6,7 +6,6 @@ module.exports = {
   name: 'offers',
   mixins: [PodResourcesHandlerMixin],
   settings: {
-    type: 'maid:Offer',
     shapeTreeUri: urlJoin(CONFIG.SHAPE_REPOSITORY_URL, 'shapetrees/maid/Offer')
   },
   methods: {
