@@ -5,6 +5,7 @@ const CONFIG = require('../config/config');
 module.exports = {
   mixins: [AppService],
   settings: {
+    baseUrl: CONFIG.HOME_URL,
     app: {
       name: CONFIG.APP_NAME,
       description: CONFIG.APP_DESCRIPTION,
@@ -21,24 +22,28 @@ module.exports = {
     accessNeeds: {
       required: [
         {
-          registeredClass: 'https://mutual-aid.app/ns/core#Offer',
+          shapeTreeUri: urlJoin(CONFIG.SHAPE_REPOSITORY_URL, 'shapetrees/maid/Offer'),
           accessMode: ['acl:Read', 'acl:Write', 'acl:Control']
         },
         {
-          registeredClass: 'https://mutual-aid.app/ns/core#Request',
+          shapeTreeUri: urlJoin(CONFIG.SHAPE_REPOSITORY_URL, 'shapetrees/maid/Request'),
           accessMode: ['acl:Read', 'acl:Write', 'acl:Control']
         },
         {
-          registeredClass: 'vcard:Location',
+          shapeTreeUri: urlJoin(CONFIG.SHAPE_REPOSITORY_URL, 'shapetrees/vcard/Location'),
           accessMode: ['acl:Read', 'acl:Write', 'acl:Control']
         },
         {
-          registeredClass: 'vcard:Individual',
+          shapeTreeUri: urlJoin(CONFIG.SHAPE_REPOSITORY_URL, 'shapetrees/as/Profile'),
           accessMode: 'acl:Read'
         },
         {
-          registeredClass: 'vcard:Group',
+          shapeTreeUri: urlJoin(CONFIG.SHAPE_REPOSITORY_URL, 'shapetrees/vcard/Group'),
           accessMode: 'acl:Read'
+        },
+        {
+          shapeTreeUri: urlJoin(CONFIG.SHAPE_REPOSITORY_URL, 'shapetrees/File'),
+          accessMode: ['acl:Read', 'acl:Write']
         },
         'apods:ReadInbox',
         'apods:ReadOutbox',
@@ -49,24 +54,6 @@ module.exports = {
         'apods:UpdateWebId'
       ],
       optional: []
-    },
-    classDescriptions: {
-      'maid:Offer': {
-        label: {
-          en: 'Offers',
-          fr: 'Offres'
-        },
-        labelPredicate: 'pair:label', // Is PAIR ontology registered ?
-        openEndpoint: urlJoin(CONFIG.FRONT_URL, '/r')
-      },
-      'maid:Request': {
-        label: {
-          en: 'Requests',
-          fr: 'Demandes'
-        },
-        labelPredicate: 'pair:label', // Is PAIR ontology registered ?
-        openEndpoint: urlJoin(CONFIG.FRONT_URL, '/r')
-      }
     },
     queueServiceUrl: CONFIG.QUEUE_SERVICE_URL
   }

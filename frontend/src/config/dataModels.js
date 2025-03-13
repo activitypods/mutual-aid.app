@@ -1,33 +1,28 @@
+const urlJoin = require('url-join');
+
 const dataModels = {
   offers: {
-    types: ['maid:Offer']
+    shapeTreeUri: urlJoin(process.env.REACT_APP_SHAPE_REPOSITORY_URL, 'shapetrees/maid/Offer')
   },
   requests: {
-    types: ['maid:Request']
+    shapeTreeUri: urlJoin(process.env.REACT_APP_SHAPE_REPOSITORY_URL, 'shapetrees/maid/Request')
   },
   OfferAndRequest: {
     types: ['maid:Offer', 'maid:Request']
   },
   Actor: {
-    types: ['as:Actor'],
-    list: {}
+    types: ['as:Actor']
   },
   Profile: {
-    types: ['vcard:Individual'],
-    list: {}
+    shapeTreeUri: urlJoin(process.env.REACT_APP_SHAPE_REPOSITORY_URL, 'shapetrees/as/Profile')
   },
   Location: {
-    types: ['vcard:Location'],
-    list: {
-      servers: 'pod'
-    }
+    shapeTreeUri: urlJoin(process.env.REACT_APP_SHAPE_REPOSITORY_URL, 'shapetrees/vcard/Location')
   },
   Group: {
-    types: ['vcard:Group'],
+    shapeTreeUri: urlJoin(process.env.REACT_APP_SHAPE_REPOSITORY_URL, 'shapetrees/vcard/Group'),
     list: {
-      servers: 'pod',
-      blankNodes: ['vcard:hasMember'],
-      containers: { pod: ['/vcard/group'] }
+      blankNodes: ['vcard:hasMember']
     }
   }
 };

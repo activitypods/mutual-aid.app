@@ -1,6 +1,6 @@
 const path = require('path');
 const { CoreService } = require('@semapps/core');
-const { apods, notify, interop, oidc, pair } = require('@semapps/ontologies');
+const { apods, notify, interop, oidc, pair, skos } = require('@semapps/ontologies');
 const CONFIG = require('../../config/config');
 
 const maid = {
@@ -31,7 +31,7 @@ module.exports = {
       password: CONFIG.JENA_PASSWORD,
       mainDataset: CONFIG.MAIN_DATASET
     },
-    ontologies: [maid, pair, apods, notify, interop, oidc],
+    ontologies: [maid, pair, apods, notify, interop, oidc, skos],
     activitypub: {
       queueServiceUrl: CONFIG.QUEUE_SERVICE_URL
     },
